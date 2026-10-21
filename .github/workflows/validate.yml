@@ -1,0 +1,27 @@
+name: Validate repository
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Validate documentation, public data, and configuration
+        run: python3 scripts/validate_repository.py
+      - name: Run analysis edge-case checks
+        run: python3 -m unittest discover -s tests -v
+      - name: Recalculate retained recovery evidence
+        run: python3 scripts/analyze_recovery.py evidence/recovery-observations.csv --check evidence/recovery-summary.json
+      - name: Check bootstrap syntax
+        run: bash -n scripts/bootstrap.sh

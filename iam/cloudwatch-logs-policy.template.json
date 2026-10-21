@@ -1,0 +1,30 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DiscoverLogGroupsInProjectRegion",
+      "Effect": "Allow",
+      "Action": "logs:DescribeLogGroups",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "us-east-1"
+        }
+      }
+    },
+    {
+      "Sid": "WriteToProjectLogGroups",
+      "Effect": "Allow",
+      "Action": [
+        "logs:DescribeLogStreams",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:logs:us-east-1:ACCOUNT_ID:log-group:/devgarza/project1/bootstrap:*",
+        "arn:aws:logs:us-east-1:ACCOUNT_ID:log-group:/devgarza/project1/nginx-access:*",
+        "arn:aws:logs:us-east-1:ACCOUNT_ID:log-group:/devgarza/project1/nginx-error:*"
+      ]
+    }
+  ]
+}

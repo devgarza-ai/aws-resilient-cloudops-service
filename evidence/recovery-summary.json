@@ -1,0 +1,38 @@
+{
+  "backend_http_200_counts": {
+    "original": 25,
+    "replacement": 52,
+    "survivor": 182
+  },
+  "error_observations": {
+    "all_samples_after_final_error_http_200": true,
+    "count": 6,
+    "first_elapsed_seconds": 113.450318,
+    "first_http_200_after_final_error_elapsed_seconds": 135.594833,
+    "first_to_last_span_seconds": 19.920652,
+    "interleaved_http_200_count": 4,
+    "last_elapsed_seconds": 133.370969,
+    "longest_consecutive_non_200": 2,
+    "samples_after_final_error": 204
+  },
+  "evidence_sha256": "8fd5781db6edc352c743921ebb5f9b1bf8f6cee74b0dd33eb3bba74a97f8e719",
+  "first_replacement_http_200_elapsed_seconds": 357.073989,
+  "http_200_count": 259,
+  "http_status_counts": {
+    "200": 259,
+    "502": 6
+  },
+  "no_http_response_count": 0,
+  "observation_span_seconds": 587.127149,
+  "sample_count": 265,
+  "sampled_http_200_percent": 97.74,
+  "sampled_non_200_percent": 2.26,
+  "schema": "project1-recovery-summary-v1",
+  "successful_duration_ms": {
+    "maximum": 1167,
+    "mean": 205.197,
+    "median": 176,
+    "minimum": 154,
+    "p95_nearest_rank": 385
+  }
+}

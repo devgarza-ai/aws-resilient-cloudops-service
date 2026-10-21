@@ -1,0 +1,37 @@
+{
+  "artifact_type": "normalized-config-evaluation-evidence",
+  "recording_observed": {
+    "AWS::EC2::SecurityGroup": "Continuous",
+    "AWS::EC2::Volume": "Continuous"
+  },
+  "requested_but_saved_state_not_independently_captured": [
+    "AWS::Config::ResourceCompliance recording",
+    "30-day Config data retention"
+  ],
+  "rules": [
+    {
+      "name": "restricted-ssh",
+      "identifier": "INCOMING_SSH_DISABLED",
+      "mode": "DETECTIVE",
+      "last_evaluation_status": "Successful",
+      "observed_compliance": "Compliant",
+      "compliant_resource_count": 4,
+      "project_resource_names": [
+        "dg-p1-alb-sg",
+        "dg-p1-web-sg"
+      ],
+      "remediation_action": null
+    },
+    {
+      "name": "encrypted-volumes",
+      "identifier": "ENCRYPTED_VOLUMES",
+      "mode": "DETECTIVE",
+      "last_evaluation_status": "Successful",
+      "observed_compliance": "Compliant",
+      "compliant_resource_count": 2,
+      "kms_id_parameter": null,
+      "remediation_action": null
+    }
+  ],
+  "scope_note": "Rule-view counts; not an account-wide security assessment."
+}

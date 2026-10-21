@@ -1,0 +1,32 @@
+# Local credentials and account-specific working material
+.aws/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials
+private/
+local/
+raw-evidence/
+*_CloudTrail_*.json
+*.json.gz
+
+# Future infrastructure state and plans
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+crash.log
+
+# Local observer output and development caches
+probe-output.csv
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+Thumbs.db
+*.tmp
+*.log

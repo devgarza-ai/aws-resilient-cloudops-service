@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1050" viewBox="0 0 1400 1050" role="img" aria-labelledby="title desc">
+<title id="title">Resilient AWS CloudOps Web Service</title>
+<desc id="desc">Public HTTP clients enter an ALB across two public subnets. The ALB sends requests to two private Nginx instances in an Auto Scaling group across two AZs. Both private subnets share one NAT gateway. CloudWatch, SNS, CloudTrail, Config, and S3 provide operational and audit evidence.</desc>
+<defs><marker id="blue" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9" fill="#2864a6"/></marker><marker id="teal" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9" fill="#178176"/></marker><marker id="gray" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9" fill="#76859a"/></marker></defs>
+<style>text{font-family:Inter,Segoe UI,Arial,sans-serif;fill:#172b46}.heading{font-size:30px;font-weight:700}.sub{font-size:17px;fill:#566780}.label{font-size:14px;fill:#566780}.node{font-size:18px;font-weight:650}.small{font-size:13px;fill:#566780}.flow{fill:none;stroke:#2864a6;stroke-width:2.6;marker-end:url(#blue)}.egress{fill:none;stroke:#178176;stroke-width:2;stroke-dasharray:7 5;marker-end:url(#teal)}.telemetry{fill:none;stroke:#76859a;stroke-width:2;stroke-dasharray:3 5;marker-end:url(#gray)}</style>
+<rect width="1400" height="1050" fill="#ffffff"/>
+<text x="50" y="53" class="heading" text-anchor="start">Resilient AWS CloudOps Web Service</text>
+<text x="50" y="84" class="sub" text-anchor="start">Console implementation · private compute · measured application recovery</text>
+<rect x="400" y="120" width="330" height="70" rx="12" fill="#f3f7fc" stroke="#a9bfdc" stroke-width="1.5"/>
+<text x="565" y="150" class="node" text-anchor="middle">External HTTP client</text>
+<text x="565" y="173" class="small" text-anchor="middle">Synthetic page and health requests</text>
+<rect x="420" y="210" width="290" height="55" rx="12" fill="#f6f8fb" stroke="#ccd6e3" stroke-width="1.5"/>
+<text x="565" y="244" class="node" text-anchor="middle">Internet gateway</text>
+<path d="M565 190 V210" class="flow"/>
+<rect x="40" y="300" width="1000" height="650" rx="16" fill="#fafcfe" stroke="#94abc6" stroke-width="1.5"/>
+<text x="65" y="332" class="node" text-anchor="start">us-east-1 · dg-p1-vpc · 10.20.0.0/16</text>
+<rect x="70" y="350" width="450" height="540" rx="12" fill="#f1f6fc" stroke="#d1dce9" stroke-width="1.5"/>
+<rect x="560" y="350" width="450" height="540" rx="12" fill="#f1f8f6" stroke="#d0e3dc" stroke-width="1.5"/>
+<text x="92" y="382" class="node" text-anchor="start">Availability Zone A · us-east-1a</text>
+<text x="582" y="382" class="node" text-anchor="start">Availability Zone B · us-east-1b</text>
+<rect x="90" y="405" width="410" height="160" rx="12" fill="#ffffff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="580" y="405" width="410" height="160" rx="12" fill="#ffffff" stroke="#d2e3dc" stroke-width="1.5"/>
+<text x="107" y="427" class="small" text-anchor="start">PUBLIC A · 10.20.1.0/24</text>
+<text x="757" y="427" class="small" text-anchor="middle">PUBLIC B · 10.20.2.0/24</text>
+<rect x="350" y="445" width="360" height="65" rx="12" fill="#e9f1fb" stroke="#7e9fc7" stroke-width="1.5"/>
+<text x="530" y="473" class="node" text-anchor="middle">Application Load Balancer</text>
+<text x="530" y="495" class="small" text-anchor="middle">HTTP :80 · both public subnets</text>
+<path d="M565 265 V435 H530 V445" class="flow"/>
+<rect x="110" y="515" width="210" height="38" rx="8" fill="#e7f5f0" stroke="#8ebeb2" stroke-width="1.5"/>
+<text x="215" y="540" class="label" text-anchor="middle">Single NAT gateway</text>
+<rect x="90" y="600" width="410" height="230" rx="12" fill="#ffffff" stroke="#cddbea" stroke-width="1.5"/>
+<rect x="580" y="600" width="410" height="230" rx="12" fill="#ffffff" stroke="#cbdfd5" stroke-width="1.5"/>
+<text x="108" y="625" class="small" text-anchor="start">PRIVATE A · 10.20.11.0/24</text>
+<text x="598" y="625" class="small" text-anchor="start">PRIVATE B · 10.20.12.0/24</text>
+<rect x="110" y="650" width="860" height="120" rx="14" fill="none" stroke="#8a9baf" stroke-width="1.5" stroke-dasharray="7 5"/>
+<rect x="135" y="675" width="320" height="70" rx="12" fill="#f0f5fc" stroke="#8eabce" stroke-width="1.5"/>
+<rect x="625" y="675" width="320" height="70" rx="12" fill="#eef8f3" stroke="#92b9a7" stroke-width="1.5"/>
+<text x="295" y="705" class="node" text-anchor="middle">Nginx / EC2 Arm64</text>
+<text x="295" y="730" class="small" text-anchor="middle">Private IP · instance role · SSM</text>
+<text x="785" y="705" class="node" text-anchor="middle">Nginx / EC2 Arm64</text>
+<text x="785" y="730" class="small" text-anchor="middle">Private IP · instance role · SSM</text>
+<text x="540" y="797" class="label" text-anchor="middle">Auto Scaling group · desired 2 · ELB health checks</text>
+<path d="M425 510 V580 H295 V675" class="flow"/>
+<path d="M650 510 V580 H785 V675" class="flow"/>
+<path d="M135 710 H105 V585 H215 V553" class="egress"/>
+<path d="M785 745 V850 H105 V585 H215 V553" class="egress"/>
+<path d="M110 534 H55 V238 H420" class="egress"/>
+<text x="540" y="876" class="small" text-anchor="middle">Both private subnets share outbound connectivity through NAT in AZ A</text>
+<text x="65" y="920" class="label" text-anchor="start">Availability boundary: application spans two AZs; egress depends on one NAT AZ.</text>
+<rect x="1080" y="300" width="280" height="650" rx="16" fill="#f8f9fc" stroke="#ccd6e3" stroke-width="1.5"/>
+<text x="1100" y="333" class="label" text-anchor="start">OPERATIONS &amp; AUDIT</text>
+<rect x="1100" y="405" width="240" height="115" rx="12" fill="#ffffff" stroke="#b7c9dd" stroke-width="1.5"/>
+<text x="1220" y="438" class="node" text-anchor="middle">CloudWatch</text>
+<text x="1220" y="465" class="label" text-anchor="middle">Health metric / alarm</text>
+<text x="1220" y="492" class="small" text-anchor="middle">Access and bootstrap logs</text>
+<path d="M710 477 H1080 V465 H1100" class="telemetry"/>
+<path d="M945 710 H1055 V490 H1100" class="telemetry"/>
+<rect x="1100" y="575" width="240" height="75" rx="12" fill="#fff8ed" stroke="#e4ca9d" stroke-width="1.5"/>
+<text x="1220" y="606" class="node" text-anchor="middle">SNS notification</text>
+<text x="1220" y="630" class="small" text-anchor="middle">ALARM email confirmed</text>
+<path d="M1220 520 V575" class="telemetry"/>
+<rect x="1100" y="705" width="240" height="100" rx="12" fill="#ffffff" stroke="#c2b7d6" stroke-width="1.5"/>
+<text x="1220" y="738" class="node" text-anchor="middle">CloudTrail + Config</text>
+<text x="1220" y="764" class="small" text-anchor="middle">API audit / rule evaluations</text>
+<text x="1220" y="787" class="small" text-anchor="middle">Management and config evidence</text>
+<rect x="1100" y="850" width="240" height="55" rx="12" fill="#ffffff" stroke="#c2b7d6" stroke-width="1.5"/>
+<text x="1220" y="883" class="label" text-anchor="middle">Dedicated S3 buckets</text>
+<path d="M1220 805 V850" class="telemetry"/>
+<path d="M60 1002 H115" class="flow"/>
+<text x="130" y="1008" class="small" text-anchor="start">Public request path</text>
+<path d="M390 1002 H445" class="egress"/>
+<text x="460" y="1008" class="small" text-anchor="start">Private outbound path</text>
+<path d="M790 1002 H845" class="telemetry"/>
+<text x="860" y="1008" class="small" text-anchor="start">Operational evidence</text>
+<text x="1345" y="1008" class="small" text-anchor="end">HTTP lab · no production SLA</text>
+</svg>

@@ -1,0 +1,22 @@
+{
+  "artifact_type": "normalized-cloudtrail-evidence-extract",
+  "source_record_count": 42,
+  "event_source": "ec2.amazonaws.com",
+  "event_name": "CreateTags",
+  "region": "us-east-1",
+  "identity_type": "IAMUser",
+  "mfa_authenticated": true,
+  "read_only": false,
+  "success": true,
+  "resource_role": "surviving-web-instance",
+  "tag_key": "AuditCheck",
+  "tag_value": "[redacted]",
+  "excluded_fields": [
+    "account and principal identifiers",
+    "source address",
+    "calendar and wall-clock fields",
+    "credential identifiers"
+  ],
+  "log_file_validation_configured": true,
+  "digest_chain_independently_validated": false
+}
