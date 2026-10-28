@@ -5,6 +5,8 @@ A Linux web service across two Availability Zones, with private application serv
 **Owner:** [Ivan Garza · devgarza-ai](https://github.com/devgarza-ai)<br>
 **Release:** `v1.0-console` · AWS operations portfolio
 
+[![XERJ Corpus Hub contributor](https://hub.xerj.org/contributors/devgarza-ai/badge.svg)](https://hub.xerj.org/contributors/devgarza-ai)
+
 [Architecture](docs/architecture.md) · [Deployment](docs/deployment.md) · [Operations](docs/operations.md) · [Recovery incident](docs/incidents/recovery-incident.md) · [Security evidence](docs/security-and-audit.md)
 
 ![Architecture of the two-AZ web service, private application tier, shared NAT egress, and monitoring and audit services](assets/architecture.svg)
